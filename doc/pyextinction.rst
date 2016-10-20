@@ -59,15 +59,6 @@ pyextinction.helpers module
     :undoc-members:
     :show-inheritance:
 
-pyextinction.testunit module
-----------------------------
-
-.. automodule:: pyextinction.testunit
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
 Module contents
 ---------------
 

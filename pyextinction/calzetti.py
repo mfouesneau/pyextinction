@@ -53,16 +53,18 @@ class Calzetti(ExtinctionLaw):
         else:
             _lamb = _lamb[:]
 
-        x = 1.e4 / _lamb  # wavenumber in um^-1
+        _lamb *= 1e-4
+
+        x = 1. / _lamb  # wavenumber in um^-1
         k = np.zeros(np.size(x))
 
-        ind = np.where( (_lamb >= 0.630 ) & (_lamb <= 2.2) )
+        ind = (_lamb >= 0.630 ) & (_lamb <= 2.2)
         k[ind] = 2.659 * (-1.857 + 1.040 * x[ind]) + Rv
 
-        ind = np.where((_lamb >= 0.0912 ) & (_lamb < 0.630) )
+        ind = (_lamb >= 0.0912 ) & (_lamb < 0.630)
         k[ind] = 2.659 * (-2.156 + 1.509 * x[ind] - 0.198 * x[ind] ** 2 + 0.011 * x[ind] ** 3 ) + Rv
 
         if Alambda:
-            return k
+            return 0.4 * k
         else:
             return 10 ** (0.4 * k)
